@@ -44,7 +44,7 @@ const AddMango = () => {
 
         <form onSubmit={handleAddPlant}>
           <div className="space-y-4 gap-3 grid grid-cols-1 md:grid-cols-2">
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">Plant Image</label>
               <input
                 type="text"
@@ -78,7 +78,7 @@ const AddMango = () => {
               </select>
             </fieldset>
 
-            <fieldset className="fieldset bg-gray-500 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">Description</label>
               <textarea
                 name="description"
@@ -163,7 +163,7 @@ const AddMango = () => {
               />
             </fieldset>
           </div>
-          <button className="btn w-full mt-1.5">Add Plant</button>
+          <button className="btn bg-blue-600 w-full mt-1.5">Add Plant</button>
         </form>
       </div>
     </div>

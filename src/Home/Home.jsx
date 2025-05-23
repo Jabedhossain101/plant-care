@@ -17,11 +17,11 @@ const Home = () => {
           <AllPlant key={mango._id} mango={mango} />
         ))}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 ">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 ">
         {mangos.map(mango => (
           <PlantDetails key={mango._id} mango={mango} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

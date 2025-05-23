@@ -6,7 +6,10 @@ import Footer from '../Components/Footer';
 const Layout = () => {
   return (
     <div>
-      <Header></Header>
+      <div className="sticky top-0 z-50 bg-white shadow">
+        {' '}
+        <Header></Header>
+      </div>
       <Outlet></Outlet>
       <Footer></Footer>
     </div>

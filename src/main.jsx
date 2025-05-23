@@ -11,6 +11,7 @@ import ErrorPage from './Pages/ErrorPage.jsx';
 import PlantDetails from './Pages/PlantDetails.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
+import AllPlant from './Components/AllPlant.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         Component: Register,
+      },
+      {
+        path: 'allMango',
+        Component: AllPlant,
       },
       {
         path: 'plantDetails',
