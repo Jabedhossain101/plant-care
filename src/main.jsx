@@ -9,6 +9,8 @@ import AddMango from './Components/AddMango.jsx';
 import UpdateMango from './Components/UpdateMango.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
 import PlantDetails from './Pages/PlantDetails.jsx';
+import Login from './Pages/Login.jsx';
+import Register from './Pages/Register.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: 'updateMango',
         Component: UpdateMango,
+      },
+      {
+        path: 'login',
+        Component: Login,
+      },
+      {
+        path: 'register',
+        Component: Register,
       },
       {
         path: 'plantDetails',

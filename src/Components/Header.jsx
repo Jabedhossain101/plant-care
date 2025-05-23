@@ -55,7 +55,7 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-1">
-        <Link to={'/login'}>
+        <Link to={'login'}>
           <button className="btn">Login</button>
         </Link>
         <Link to={'register'}>
