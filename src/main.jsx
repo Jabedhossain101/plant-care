@@ -7,9 +7,11 @@ import Layout from './Layout/Layout.jsx';
 import Home from './Home/Home.jsx';
 import AddMango from './Components/AddMango.jsx';
 import UpdateMango from './Components/UpdateMango.jsx';
+import ErrorPage from './Pages/ErrorPage.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
+    errorElement: <ErrorPage></ErrorPage>,
     Component: Layout,
     children: [
       {

@@ -1,48 +1,78 @@
 import React, { useEffect, useState } from 'react';
 
-const images = [
-  'https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp',
-  'https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp',
-  'https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp',
-  'https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp',
+const slides = [
+  {
+    image: 'https://i.ibb.co/hxFGLXLY/banner2.jpg',
+    title: 'Welcome to Plant World',
+    subtitle: 'Grow your green friends with love ',
+  },
+  {
+    image: 'https://i.ibb.co/HL2Nh8R9/Bannertwo.jpg',
+    title: 'Nature at Your Fingertips',
+    subtitle: 'Explore our collection of indoor plants ',
+  },
+  {
+    image: 'https://i.ibb.co/27JrBd2z/banner3.jpg',
+    title: 'Fresh Air, Fresh Life',
+    subtitle: 'Bring the jungle into your home ',
+  },
+  {
+    image: 'https://i.ibb.co/5WDJqcLw/banner4.jpg',
+    title: 'Beauty in Every Leaf',
+    subtitle: 'Discover rare and exotic plants ',
+  },
 ];
 
 const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [animate, setAnimate] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % images.length);
+      setAnimate(false);
+      setTimeout(() => {
+        setCurrentIndex(prev => (prev + 1) % slides.length);
+        setAnimate(true);
+      }, 50);
     }, 3000);
+
     return () => clearInterval(interval);
   }, []);
 
   const goToPrevious = () => {
-    setCurrentIndex((currentIndex - 1 + images.length) % images.length);
+    setAnimate(false);
+    setTimeout(() => {
+      setCurrentIndex((currentIndex - 1 + slides.length) % slides.length);
+      setAnimate(true);
+    }, 50);
   };
 
   const goToNext = () => {
-    setCurrentIndex((currentIndex + 1) % images.length);
+    setAnimate(false);
+    setTimeout(() => {
+      setCurrentIndex((currentIndex + 1) % slides.length);
+      setAnimate(true);
+    }, 50);
   };
 
+  const { image, title, subtitle } = slides[currentIndex];
+
   return (
-    <div className="relative w-full h-[500px] overflow-hidden">
-      {/* Image */}
+    <div className="relative w-full h-[500px] overflow-hidden bg-black">
+      {/* Image with slide-in from right */}
       <img
-        src={images[currentIndex]}
+        src={image}
         alt={`Slide ${currentIndex + 1}`}
-        className="w-full h-full object-cover transition duration-1000"
+        className={`w-full h-full object-cover transition-all duration-1000 ease-in-out 
+        ${
+          animate ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+        }`}
       />
 
       {/* Text Overlay */}
-      <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center text-white">
-        <h1 className="text-4xl font-bold drop-shadow-lg">
-          Welcome to Plant World
-        </h1>
-        <p className="text-lg mt-2 drop-shadow-md">
-          Grow your green friends with love 🌿
-        </p>
-        <button className="mt-4 btn btn-primary">Explore Plants</button>
+      <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center text-red-400">
+        <h1 className="text-4xl font-bold drop-shadow-lg">{title}</h1>
+        <p className="text-lg mt-2 drop-shadow-md">{subtitle}</p>
       </div>
 
       {/* Navigation buttons */}
