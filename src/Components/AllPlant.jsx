@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const AllPlant = ({ mango }) => {
   const { Photo, Plant, wateringFrequency, careLevel, description } = mango;
@@ -27,9 +28,12 @@ const AllPlant = ({ mango }) => {
               {wateringFrequency}
             </div>
           </div>
-          <button className="btn bg-fuchsia-600 hover:bg-red-500 hover:text-2xl hover:p-6">
+          <Link
+            to={'/plantDetails'}
+            className="btn bg-fuchsia-600 hover:bg-red-500 hover:text-2xl hover:p-6"
+          >
             View More
-          </button>
+          </Link>
         </div>
       </div>
     </div>

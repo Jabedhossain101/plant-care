@@ -8,6 +8,7 @@ import Home from './Home/Home.jsx';
 import AddMango from './Components/AddMango.jsx';
 import UpdateMango from './Components/UpdateMango.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
+import PlantDetails from './Pages/PlantDetails.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
       {
         path: 'updateMango',
         Component: UpdateMango,
+      },
+      {
+        path: 'plantDetails',
+        loader: () => fetch('http://localhost:4000/mangos'),
+        Component: PlantDetails,
       },
     ],
   },
