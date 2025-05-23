@@ -5,7 +5,7 @@ const Header = () => {
   const links = (
     <>
       <Link to="/">
-        <li className="m-2">Home</li>
+        <li className="m-2 border-b-2">Home</li>
       </Link>
       <Link to="/allPlants">
         <li className="m-2">All plants</li>

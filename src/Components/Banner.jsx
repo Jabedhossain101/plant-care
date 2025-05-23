@@ -75,12 +75,11 @@ const Banner = () => {
         <p className="text-lg mt-2 drop-shadow-md">{subtitle}</p>
       </div>
 
-      {/* Navigation buttons */}
       <div className="absolute left-5 right-5 top-1/2 flex justify-between -translate-y-1/2 transform z-20">
-        <button onClick={goToPrevious} className="btn btn-circle">
+        <button onClick={goToPrevious} className="text-black">
           ❮
         </button>
-        <button onClick={goToNext} className="btn btn-circle">
+        <button onClick={goToNext} className="text-blue-800">
           ❯
         </button>
       </div>

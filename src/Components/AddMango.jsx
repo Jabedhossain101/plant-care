@@ -54,7 +54,7 @@ const AddMango = () => {
               />
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">Plant Name</label>
               <input
                 type="text"
@@ -64,7 +64,7 @@ const AddMango = () => {
               />
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">Category</label>
               <select name="category" className="select select-bordered w-full">
                 <option disabled selected>
@@ -78,7 +78,7 @@ const AddMango = () => {
               </select>
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-500 border-base-300 rounded-box w-full border p-4">
               <label className="label">Description</label>
               <textarea
                 name="description"
@@ -88,7 +88,7 @@ const AddMango = () => {
               ></textarea>
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">Care Level</label>
               <select
                 name="careLevel"
@@ -103,7 +103,7 @@ const AddMango = () => {
               </select>
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">
                 Watering Frequency (e.g., every 3 days)
               </label>
@@ -115,7 +115,7 @@ const AddMango = () => {
               />
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">Last Watered Date</label>
               <input
                 type="date"
@@ -124,7 +124,7 @@ const AddMango = () => {
               />
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">Next Watering Date</label>
               <input
                 type="date"
@@ -133,7 +133,7 @@ const AddMango = () => {
               />
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">Health Status</label>
               <input
                 type="text"
@@ -143,7 +143,7 @@ const AddMango = () => {
               />
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">User Email</label>
               <input
                 type="email"
@@ -153,7 +153,7 @@ const AddMango = () => {
               />
             </fieldset>
 
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
               <label className="label">User Name</label>
               <input
                 type="text"
