@@ -14,6 +14,7 @@ import Register from './Pages/Register.jsx';
 import AllPlant from './Components/AllPlant.jsx';
 import MyPlant from './Components/MyPlant.jsx';
 import Update from './Components/Update.jsx';
+import AuthProvider from './Pages/AuthProvider.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -67,6 +68,8 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
