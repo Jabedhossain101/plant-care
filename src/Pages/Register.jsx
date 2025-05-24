@@ -1,18 +1,22 @@
 import React, { use } from 'react';
 import { AuthContext } from './AuthContext';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const { createUser } = use(AuthContext);
-  console.log(createUser);
+  // console.log(createUser);
 
   const handleSignUp = e => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const { email, password, ...userProfile } = Object.fromEntries(
-      formData.entries()
-    );
+    const { email, password, ...rest } = Object.fromEntries(formData.entries());
+    const userProfile = {
+      email,
+      ...rest,
+    };
+
     console.log(email, password, userProfile);
 
     //create  user in the firebase
@@ -20,6 +24,26 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         console.log(result.user);
+
+        //save profile info in the db
+
+        fetch('http://localhost:4000/users', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.insertedId) {
+              Swal.fire({
+                title: 'Sign in Successfully',
+                icon: 'success',
+                draggable: true,
+              });
+            }
+          });
       })
       .catch(error => {
         console.log(error);

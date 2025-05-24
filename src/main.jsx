@@ -15,6 +15,7 @@ import AllPlant from './Components/AllPlant.jsx';
 import MyPlant from './Components/MyPlant.jsx';
 import Update from './Components/Update.jsx';
 import AuthProvider from './Pages/AuthProvider.jsx';
+import Users from './Pages/Users.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
       {
         path: 'myPlant',
         Component: MyPlant,
+      },
+      {
+        path: 'users',
+        loader: () => fetch('http://localhost:4000/users'),
+        Component: Users,
       },
       {
         path: 'update/:id',
