@@ -4,6 +4,7 @@ import MyPlant from './MyPlant';
 
 const UpdateMango = () => {
   const data = useLoaderData();
+  console.log(data);
 
   return (
     <div>
