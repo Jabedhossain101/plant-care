@@ -27,7 +27,7 @@ const Register = () => {
 
         //save profile info in the db
 
-        fetch('http://localhost:4000/users', {
+        fetch('https://simple-mango-server.vercel.app/users', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',

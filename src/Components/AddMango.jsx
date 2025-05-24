@@ -10,7 +10,7 @@ const AddMango = () => {
     const newMango = Object.fromEntries(formData.entries());
     console.log(newMango);
 
-    fetch('http://localhost:4000/mangos', {
+    fetch('https://simple-mango-server.vercel.app/mangos', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

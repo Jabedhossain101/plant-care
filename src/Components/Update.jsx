@@ -26,7 +26,7 @@ const Update = () => {
 
     //send update mango to the db
 
-    fetch(`http://localhost:4000/mangos/${_id}`, {
+    fetch(`https://simple-mango-server.vercel.app/mangos/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

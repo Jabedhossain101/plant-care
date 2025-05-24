@@ -16,6 +16,21 @@ const Login = () => {
     signInUser(email, password)
       .then(result => {
         console.log(result.user);
+        const signInInfo = {
+          email,
+          lastSignInTime: result.user?.metadata.lastSignInTime,
+        };
+        fetch('https://simple-mango-server.vercel.app/users', {
+          method: 'PATCH',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(signInInfo),
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log('after update patch', data);
+          });
       })
       .catch(error => {
         console.log(error);
@@ -23,7 +38,7 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800 mx-auto mt-6 mb-6">
+      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-200 dark:text-gray-800 mx-auto mt-6 mb-6">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign in</h1>
           <p className="text-sm dark:text-gray-600">

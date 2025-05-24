@@ -16,6 +16,8 @@ import MyPlant from './Components/MyPlant.jsx';
 import Update from './Components/Update.jsx';
 import AuthProvider from './Pages/AuthProvider.jsx';
 import Users from './Pages/Users.jsx';
+import All from './Components/All.jsx';
+import AllData from './Components/AllData.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch('http://localhost:4000/mangos'),
+        loader: () => fetch('https://simple-mango-server.vercel.app/mangos'),
         Component: Home,
       },
       {
@@ -33,8 +35,18 @@ const router = createBrowserRouter([
       },
       {
         path: 'updateMango',
-        loader: () => fetch('http://localhost:4000/mangos'),
+        loader: () => fetch('https://simple-mango-server.vercel.app/mangos'),
         Component: UpdateMango,
+      },
+      {
+        path: 'allData',
+        loader: () => fetch('https://simple-mango-server.vercel.app/mangos'),
+        Component: All,
+      },
+      {
+        path: 'allDetails',
+        loader: () => fetch('https://simple-mango-server.vercel.app/mangos'),
+        Component: AllData,
       },
       {
         path: 'login',
@@ -54,19 +66,20 @@ const router = createBrowserRouter([
       },
       {
         path: 'users',
-        loader: () => fetch('http://localhost:4000/users'),
+        loader: () => fetch('https://simple-mango-server.vercel.app/users'),
         Component: Users,
       },
+
       {
         path: 'update/:id',
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/mangos/${params.id}`),
+          fetch(`https://simple-mango-server.vercel.app/mangos/${params.id}`),
         Component: Update,
       },
       {
         path: 'plantDetails/:id',
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/mangos/${params.id}`),
+          fetch(`https://simple-mango-server.vercel.app/mangos/${params.id}`),
         Component: PlantDetails,
       },
     ],

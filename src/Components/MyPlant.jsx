@@ -17,7 +17,7 @@ const MyPlant = ({ singleData }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4000/mangos/${_id}`, {
+        fetch(`https://simple-mango-server.vercel.app/mangos/${_id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())
@@ -32,6 +32,9 @@ const MyPlant = ({ singleData }) => {
       }
     });
   };
+
+  // https://simple-mango-server.vercel.app/
+
   return (
     <div className="card bg-base-100 w-80 shadow-md m-4 mx-auto">
       <figure className="px-6 pt-6">
