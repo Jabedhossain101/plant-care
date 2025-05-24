@@ -5,23 +5,25 @@ const Footer = () => {
   const football = (
     <>
       <Link to="/">
-        <li className="m-2 list-none border-b-1 hover:bg-gray-200">Home</li>
+        <li className="m-2 list-none focus:underline hover:underline">Home</li>
       </Link>
       <Link to="/allPlants">
-        <li className="m-2 list-none border-b-1">All plants</li>
+        <li className="m-2 list-none focus:underline hover:underline">
+          All plants
+        </li>
       </Link>
       <Link to="/addPlant">
-        <li className="m-2 list-none border-b-1 hover:bg-gray-200">
+        <li className="m-2 list-none focus:underline hover:underline">
           Add plant
         </li>
       </Link>
       <Link to="/updateMango">
-        <li className="m-2 list-none border-b-1 hover:bg-gray-200  ">
+        <li className="m-2 list-none focus:underline hover:underline  ">
           My Plants
         </li>
       </Link>
       <Link to="/unit">
-        <li className="m-2 list-none border-b-1 hover:bg-gray-200">Blog</li>
+        <li className="m-2 list-none focus:underline hover:underline">Blog</li>
       </Link>
     </>
   );

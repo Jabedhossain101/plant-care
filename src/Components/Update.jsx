@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Update = () => {
   const {
+    _id,
     Photo,
     Plant,
     careLevel,
@@ -21,6 +23,26 @@ const Update = () => {
     const formData = new FormData(form);
     const updatedPlant = Object.fromEntries(formData.entries());
     console.log(updatedPlant);
+
+    //send update mango to the db
+
+    fetch(`http://localhost:4000/mangos/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updatedPlant),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: 'Plant Updated Successfully',
+            icon: 'success',
+            draggable: true,
+          });
+        }
+      });
   };
   return (
     <div>

@@ -48,7 +48,7 @@ const AllPlant = ({ mango }) => {
 
         <Link
           to={`/plantDetails/${_id}`}
-          className="btn bg-fuchsia-600 hover:bg-red-500 hover:text-xl hover:p-2"
+          className="btn bg-fuchsia-500 hover:bg-fuchsia-600  hover:p-2"
         >
           View More
         </Link>
