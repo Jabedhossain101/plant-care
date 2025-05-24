@@ -12,6 +12,7 @@ import PlantDetails from './Pages/PlantDetails.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AllPlant from './Components/AllPlant.jsx';
+import MyPlant from './Components/MyPlant.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'updateMango',
+        loader: () => fetch('http://localhost:4000/mangos'),
         Component: UpdateMango,
       },
       {
@@ -42,6 +44,11 @@ const router = createBrowserRouter([
       {
         path: 'allMango',
         Component: AllPlant,
+      },
+      {
+        path: 'myPlant',
+
+        Component: MyPlant,
       },
       {
         path: 'plantDetails',

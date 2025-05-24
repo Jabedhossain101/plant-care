@@ -13,7 +13,7 @@ const Header = () => {
       <Link to="/addPlant">
         <li className="m-2">Add plant</li>
       </Link>
-      <Link to="/unit">
+      <Link to="/updateMango">
         <li className="m-2">My Plants</li>
       </Link>
       <Link to="/unit">

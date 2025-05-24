@@ -15,7 +15,7 @@ const Footer = () => {
           Add plant
         </li>
       </Link>
-      <Link to="/unit">
+      <Link to="/updateMango">
         <li className="m-2 list-none border-b-1 hover:bg-gray-200  ">
           My Plants
         </li>
