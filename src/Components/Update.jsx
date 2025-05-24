@@ -17,12 +17,16 @@ const Update = () => {
   } = useLoaderData();
   const handleUpdatePlant = e => {
     e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const updatedPlant = Object.fromEntries(formData.entries());
+    console.log(updatedPlant);
   };
   return (
     <div>
       <div className="p-12 text-center">
         <h1 className="text-5xl">Update Plant</h1>
-        <p className="text-fuchsia-400 m-4">
+        <p className="text-fuchsia-700 m-4">
           Mango is called the king of fruits. It is sweet, juicy, and full of
           vitamins. People love to eat mangoes during the summer season.
         </p>
@@ -58,9 +62,10 @@ const Update = () => {
                 defaultValue={category}
                 className="select select-bordered w-full"
               >
-                <option disabled selected>
+                <option disabled value="">
                   Select category
                 </option>
+
                 <option>Succulent</option>
                 <option>Fern</option>
                 <option>Flowering</option>
@@ -87,9 +92,10 @@ const Update = () => {
                 defaultValue={careLevel}
                 className="select select-bordered w-full"
               >
-                <option disabled selected>
-                  Select care level
+                <option disabled value="">
+                  Select category
                 </option>
+
                 <option>Easy</option>
                 <option>Moderate</option>
                 <option>Difficult</option>
@@ -162,7 +168,9 @@ const Update = () => {
               />
             </fieldset>
           </div>
-          <button className="btn bg-blue-600 w-full mt-1.5">Add Plant</button>
+          <button className="btn bg-blue-600 w-full mt-1.5">
+            Update Plant
+          </button>
         </form>
       </div>
     </div>
