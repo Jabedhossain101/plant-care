@@ -51,12 +51,15 @@ const router = createBrowserRouter([
         Component: MyPlant,
       },
       {
-        path: 'update',
+        path: 'update/:id',
+        loader: ({ params }) =>
+          fetch(`http://localhost:4000/mangos/${params.id}`),
         Component: Update,
       },
       {
         path: 'plantDetails/:id',
-        loader: () => fetch('http://localhost:4000/mangos'),
+        loader: ({ params }) =>
+          fetch(`http://localhost:4000/mangos/${params.id}`),
         Component: PlantDetails,
       },
     ],

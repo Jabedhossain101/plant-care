@@ -51,9 +51,13 @@ const MyPlant = ({ singleData }) => {
           <Link to={'/addPlant'} className="btn btn-sm btn-success" title="Add">
             <Plus size={18} />
           </Link>
-          <button className="btn btn-sm btn-warning" title="Update">
+          <Link
+            to={`/update/${_id}`}
+            className="btn btn-sm btn-warning"
+            title="Update"
+          >
             <Pencil size={18} />
-          </button>
+          </Link>
           <button
             onClick={() => handleDelete(_id)}
             className="btn btn-sm btn-error"

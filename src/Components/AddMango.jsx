@@ -36,7 +36,7 @@ const AddMango = () => {
   return (
     <div>
       <div className="p-12 text-center">
-        <h1 className="text-5xl">Add Mango</h1>
+        <h1 className="text-5xl">Add Plant</h1>
         <p className="text-fuchsia-400 m-4">
           Mango is called the king of fruits. It is sweet, juicy, and full of
           vitamins. People love to eat mangoes during the summer season.

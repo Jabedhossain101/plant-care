@@ -76,10 +76,18 @@ const Banner = () => {
       </div>
 
       <div className="absolute left-5 right-5 top-1/2 flex justify-between -translate-y-1/2 transform z-20">
-        <button onClick={goToPrevious} className="text-black">
+        <button
+          onClick={goToPrevious}
+          className="text-black"
+          data-tip="Previous Slide"
+        >
           ❮
         </button>
-        <button onClick={goToNext} className="text-blue-800">
+        <button
+          onClick={goToNext}
+          data-tip="Next Slide"
+          className="text-blue-800"
+        >
           ❯
         </button>
       </div>
