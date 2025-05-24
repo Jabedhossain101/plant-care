@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from './AuthContext';
 
 const Login = () => {
+  const { signInUser } = use(AuthContext);
+  const handleSignIn = e => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    //firebase sign in send
+
+    signInUser(email, password)
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800 mx-auto mt-6 mb-6">
@@ -11,7 +30,7 @@ const Login = () => {
             Sign in to access your account
           </p>
         </div>
-        <form noValidate="" action="" className="space-y-12">
+        <form onSubmit={handleSignIn} className="space-y-12">
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
@@ -50,7 +69,7 @@ const Login = () => {
           <div className="space-y-2">
             <div>
               <button
-                type="button"
+                type="submit"
                 className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50"
               >
                 Sign in

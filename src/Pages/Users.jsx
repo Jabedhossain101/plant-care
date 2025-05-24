@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
 const Users = () => {
   const initialUsers = useLoaderData();
+  console.log(initialUsers);
   const [users, setUsers] = useState(initialUsers);
-  const handleDelete = _id => {
+  const handleDelete = id => {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -16,6 +17,16 @@ const Users = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
+        fetch(`http://localhost:4000/users/${id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log('after delete ', data);
+          });
+
+        const remainingUsers = users.filter(user => user._id !== id);
+        setUsers(remainingUsers);
         Swal.fire({
           title: 'Deleted!',
           text: 'Your file has been deleted.',
@@ -34,7 +45,7 @@ const Users = () => {
             <tr>
               <th>No</th>
               <th>Name</th>
-              <th>Fasion</th>
+              <th>Email</th>
               <th>Remove</th>
               <th></th>
             </tr>
@@ -59,7 +70,9 @@ const Users = () => {
                 </td>
                 <td>
                   <br />
-                  <span className="badge badge-ghost badge-sm">Student</span>
+                  <span className="badge badge-ghost badge-sm">
+                    {user.email}
+                  </span>
                 </td>
 
                 <th>
@@ -74,6 +87,17 @@ const Users = () => {
             ))}
           </tbody>
         </table>
+        <Link
+          to={'/register'}
+          href="#_"
+          className="px-5 py-2.5 relative rounded group  text-white font-medium inline-block"
+        >
+          <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
+          <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
+          <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
+          <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
+          <span className="relative">Button Text</span>
+        </Link>
       </div>
     </div>
   );

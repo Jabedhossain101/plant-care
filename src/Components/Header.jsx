@@ -16,6 +16,9 @@ const Header = () => {
       <Link to="/updateMango">
         <li className="m-2">My Plants</li>
       </Link>
+      <Link to="/users">
+        <li className="m-2">All user</li>
+      </Link>
       <Link to="/unit">
         <li className="m-2">Blog</li>
       </Link>
