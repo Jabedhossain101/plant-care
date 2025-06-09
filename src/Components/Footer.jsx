@@ -7,7 +7,7 @@ const Footer = () => {
       <Link to="/">
         <li className="m-2 list-none focus:underline hover:underline">Home</li>
       </Link>
-      <Link to="/allPlants">
+      <Link to="/allData">
         <li className="m-2 list-none focus:underline hover:underline">
           All plants
         </li>
@@ -29,10 +29,20 @@ const Footer = () => {
   );
   return (
     <div>
-      <footer className="footer footer-horizontal footer-center bg-blue-200 text-base-content rounded p-10">
+      <footer className="footer footer-horizontal footer-center bg-indigo-100 text-base-content rounded p-10">
+        <div className="flex">
+          <img
+            className="h-[40px] rounded-3xl"
+            src="https://i.ibb.co/QFqvKGYS/att.jpg"
+            alt=""
+          />
+          <h1 className="text-2xl font-bold">
+            GREEN<span className="text-green-500">SPHERE</span>
+          </h1>
+        </div>
         <nav className="grid grid-flow-col gap-4">{football}</nav>
         <nav>
-          <div className="grid grid-flow-col gap-4">
+          <div className="grid grid-flow-col gap-8">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -68,10 +78,16 @@ const Footer = () => {
             </a>
           </div>
         </nav>
+        <div className="flex">
+          <h1>
+            <span className="font-bold">Email:</span> ahmed@gmail.com
+          </h1>
+          |<span className="font-bold">Contact:</span> 0123456789
+        </div>
         <aside>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by ACME
-            Industries Ltd
+            Copyright © {new Date().getFullYear()} - All right reserved by :
+            <a href="">MD JABED HOSSAIN RAFSAN</a>
           </p>
         </aside>
       </footer>

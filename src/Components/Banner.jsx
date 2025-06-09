@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 const slides = [
   {
-    image: 'https://i.ibb.co/hxFGLXLY/banner2.jpg',
+    image: 'https://i.ibb.co/mFhjfMDx/image.png',
     title: 'Welcome to Plant World',
     subtitle: 'Grow your green friends with love ',
   },
   {
-    image: 'https://i.ibb.co/HL2Nh8R9/Bannertwo.jpg',
+    image: 'https://i.ibb.co/5XWpX59L/image.png',
     title: 'Nature at Your Fingertips',
     subtitle: 'Explore our collection of indoor plants ',
   },
@@ -17,7 +17,7 @@ const slides = [
     subtitle: 'Bring the jungle into your home ',
   },
   {
-    image: 'https://i.ibb.co/5WDJqcLw/banner4.jpg',
+    image: 'https://i.ibb.co/d43K7wrJ/image.png',
     title: 'Beauty in Every Leaf',
     subtitle: 'Discover rare and exotic plants ',
   },
@@ -58,7 +58,7 @@ const Banner = () => {
   const { image, title, subtitle } = slides[currentIndex];
 
   return (
-    <div className="relative w-full h-[500px] overflow-hidden bg-black">
+    <div className="relative w-full h-[600px] overflow-hidden bg-black">
       {/* Image with slide-in from right */}
       <img
         src={image}
@@ -70,9 +70,13 @@ const Banner = () => {
       />
 
       {/* Text Overlay */}
-      <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center text-red-400">
-        <h1 className="text-4xl font-bold drop-shadow-lg">{title}</h1>
-        <p className="text-lg mt-2 drop-shadow-md">{subtitle}</p>
+      <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center text-gray-600">
+        <h1 className="text-4xl font-bold drop-shadow-lg animate-slide-in-left">
+          {title}
+        </h1>
+        <p className="text-lg mt-2 drop-shadow-md animate-fade-in">
+          {subtitle}
+        </p>
       </div>
 
       <div className="absolute left-5 right-5 top-1/2 flex justify-between -translate-y-1/2 transform z-20">

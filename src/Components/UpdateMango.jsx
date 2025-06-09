@@ -8,8 +8,7 @@ const UpdateMango = () => {
 
   return (
     <div>
-      <h1>This is update page</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {data.map(singleData => (
           <MyPlant key={singleData._id} singleData={singleData} />
         ))}

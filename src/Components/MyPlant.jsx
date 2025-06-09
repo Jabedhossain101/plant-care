@@ -36,14 +36,16 @@ const MyPlant = ({ singleData }) => {
   // https://simple-mango-server.vercel.app/
 
   return (
-    <div className="card bg-base-100 w-80 shadow-md m-4 mx-auto">
-      <figure className="px-6 pt-6">
+    <div className="card bg-base-100 w-80 shadow-md m-4 mx-auto hover:shadow-2xl">
+      <figure className="px-6 pt-6 pb-4 bg-orange-100">
         <img
           src={Photo}
           alt={Plant}
           className="rounded-xl h-40 w-40 object-cover"
         />
       </figure>
+      <hr className="border-t-1 border-gray-600 w-full " />
+
       <div className="card-body items-center text-center space-y-2">
         <h2 className="card-title text-lg font-bold">{Plant}</h2>
         <p className="text-sm text-gray-500">

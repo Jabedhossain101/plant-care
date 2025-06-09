@@ -50,9 +50,9 @@ const Register = () => {
       });
   };
   return (
-    <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8  bg-gray-700 dark:text-base-100 mx-auto my-4">
+    <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8  bg-blue-100 dark:text-black mx-auto my-4">
       <h2 className="mb-3 text-3xl font-semibold text-center">Sign Up</h2>
-      <p className="text-sm text-center dark:text-gray-200">
+      <p className="text-sm text-center dark:text-gray-800">
         If you have an account?
         <Link
           to={'/login'}

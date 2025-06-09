@@ -11,7 +11,7 @@ const AllPlant = ({ mango }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 1000);
+    const timeout = setTimeout(() => setLoading(false), 200);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -24,36 +24,38 @@ const AllPlant = ({ mango }) => {
   }
 
   return (
-    <div className="card bg-sky-300 m-6 w-96 mx-auto shadow-sm">
-      <p className="text-sm mt-1">{`Today is: ${formatted}`}</p>
+    <>
+      <div className="card bg-base-400 m-6 w-96 mx-auto shadow-lg hover:shadow-2xl">
+        <p className="text-sm mt-1 ml-2">{`Today is: ${formatted}`}</p>
 
-      <figure>
-        <img
-          className="h-[260px] w-[260px] mt-2 rounded-2xl bg-blue-500"
-          src={Photo}
-          alt="Plant"
-        />
-      </figure>
+        <figure>
+          <img
+            className="h-[260px] w-[260px] mt-2 rounded-2xl bg-none"
+            src={Photo}
+            alt="Plant"
+          />
+        </figure>
 
-      <div className="card-body">
-        <h2 className="card-title">
-          {Plant}
-          <div className="badge badge-success text-gray-800">{careLevel}</div>
-        </h2>
-        <p className="text-gray-600">{description}</p>
+        <div className="card-body">
+          <h2 className="card-title">
+            {Plant}
+            <div className="badge badge-success text-gray-800">{careLevel}</div>
+          </h2>
+          <p className="text-gray-600">{description}</p>
 
-        <div className="card-actions justify-end">
-          <div className="badge badge-secondary">{wateringFrequency}</div>
+          <div className="card-actions justify-end">
+            <div className="badge badge-secondary">{wateringFrequency}</div>
+          </div>
+
+          <Link
+            to={`/plantDetails/${_id}`}
+            className="btn bg-violet-600 hover:bg-violet-800  hover:p-2"
+          >
+            View Details
+          </Link>
         </div>
-
-        <Link
-          to={`/plantDetails/${_id}`}
-          className="btn bg-fuchsia-500 hover:bg-fuchsia-600  hover:p-2"
-        >
-          View More
-        </Link>
       </div>
-    </div>
+    </>
   );
 };
 

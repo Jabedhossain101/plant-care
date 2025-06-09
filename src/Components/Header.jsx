@@ -5,9 +5,9 @@ const Header = () => {
   const links = (
     <>
       <Link to="/">
-        <li className="m-2 border-b-2">Home</li>
+        <li className="m-2">Home</li>
       </Link>
-      <Link to="/allData">
+      <Link to="/allTrees">
         <li className="m-2">All plants</li>
       </Link>
       <Link to="/addPlant">
@@ -25,7 +25,7 @@ const Header = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-green-50 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,7 +52,16 @@ const Header = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Plant world</a>
+        <div className="flex">
+          <img
+            className="h-[40px] rounded-3xl"
+            src="https://i.ibb.co/QFqvKGYS/att.jpg"
+            alt=""
+          />
+          <a className="btn btn-ghost text-xl">
+            GREEN<span className="text-green-500">SPHERE</span>
+          </a>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

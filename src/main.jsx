@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
@@ -18,6 +18,7 @@ import AuthProvider from './Pages/AuthProvider.jsx';
 import Users from './Pages/Users.jsx';
 import All from './Components/All.jsx';
 import AllData from './Components/AllData.jsx';
+// import PrivateRoute from './Pages/PrivateRoute.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'addPlant',
-        Component: AddMango,
+        element: <AddMango></AddMango>,
       },
       {
         path: 'updateMango',
@@ -39,12 +40,12 @@ const router = createBrowserRouter([
         Component: UpdateMango,
       },
       {
-        path: 'allData',
-        loader: () => fetch('https://simple-mango-server.vercel.app/mangos'),
+        path: 'all',
+
         Component: All,
       },
       {
-        path: 'allDetails',
+        path: 'allTrees',
         loader: () => fetch('https://simple-mango-server.vercel.app/mangos'),
         Component: AllData,
       },
@@ -86,9 +87,11 @@ const router = createBrowserRouter([
   },
 ]);
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
-  </StrictMode>
+  <Suspense>
+    <StrictMode>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </StrictMode>
+  </Suspense>
 );

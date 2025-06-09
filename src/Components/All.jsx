@@ -1,29 +1,61 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import { format } from 'date-fns';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
-const All = () => {
-  const data = useLoaderData();
-  console.log(data);
+const All = ({ singleData }) => {
+  const { _id, Photo, Plant, wateringFrequency, careLevel, description } =
+    singleData;
+  const today = new Date();
+  const formatted = format(today, 'PPP');
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 400);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[400px]">
+        <span className="loading loading-spinner loading-lg text-green-500"></span>
+      </div>
+    );
+  }
 
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
-      <figure className="px-10 pt-10">
-        <img
-          src="https://i.ibb.co/TMfNzHMQ/photo.jpg"
-          alt="Shoes"
-          className="rounded-xl"
-        />
-      </figure>
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">Plant</h2>
-        <p>
-          Plants help maintain environmental balance and bring mental peace.
-          With daily care, they not only grow but also add a touch of greenery
-          and calmness to our lives. In every plant, we find the beauty and
-          serenity of life.
-        </p>
+    <>
+      <div className="card bg-base-400 m-6 w-96 mx-auto shadow-lg hover:shadow-2xl border-b-4 border-l-4 border-gray-400">
+        <p className="text-sm mt-1 ml-2">{`Today is: ${formatted}`}</p>
+
+        <figure>
+          <img
+            className="h-[260px] w-[260px] mt-2 rounded-2xl bg-none"
+            src={Photo}
+            alt="Plant"
+          />
+        </figure>
+
+        <div className="card-body">
+          <h2 className="card-title">
+            {Plant}
+            <div className="badge badge-success text-gray-800">{careLevel}</div>
+          </h2>
+          <p className="text-gray-600">{description}</p>
+
+          <div className="card-actions justify-end">
+            <div className="badge badge-secondary">{wateringFrequency}</div>
+          </div>
+
+          <Link
+            to={`/plantDetails/${_id}`}
+            className="btn bg-violet-600 hover:bg-violet-800  hover:p-2"
+          >
+            View Details
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

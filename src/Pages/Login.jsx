@@ -1,9 +1,15 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from './AuthContext';
 
 const Login = () => {
   const { signInUser } = use(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
+
   const handleSignIn = e => {
     e.preventDefault();
     const form = e.target;
@@ -30,6 +36,7 @@ const Login = () => {
           .then(res => res.json())
           .then(data => {
             console.log('after update patch', data);
+            navigate(from, { replace: true });
           });
       })
       .catch(error => {
@@ -84,6 +91,7 @@ const Login = () => {
           <div className="space-y-2">
             <div>
               <button
+                onClick={() => navigate('/addPlant')}
                 type="submit"
                 className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50"
               >
