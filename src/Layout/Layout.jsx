@@ -6,12 +6,13 @@ import Footer from '../Components/Footer';
 const Layout = () => {
   return (
     <div>
-      <div className="sticky top-0 z-50 bg-white shadow">
-        {' '}
-        <Header></Header>
+      <div className="max-w-7xl mx-auto">
+        <div className="sticky top-0 z-50 bg-white shadow">
+          {' '}
+          <Header></Header>
+        </div>
+        <Outlet></Outlet>
       </div>
-      <Outlet></Outlet>
-
       <Footer></Footer>
     </div>
   );

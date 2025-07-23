@@ -24,38 +24,42 @@ const AllPlant = ({ mango }) => {
   }
 
   return (
-    <>
-      <div className="card bg-base-400 m-6 w-96 mx-auto shadow-lg hover:shadow-2xl">
-        <p className="text-sm mt-1 ml-2">{`Today is: ${formatted}`}</p>
-
-        <figure>
+    <div className="max-w-sm mx-auto m-6">
+      <div className="relative bg-gradient-to-br from-green-100 via-white to-green-50 rounded-3xl shadow-2xl hover:shadow-green-300 transition-shadow duration-300 overflow-hidden group">
+        {/* Decorative leaf icon */}
+        <span className="absolute top-3 right-3 text-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-300 select-none pointer-events-none">
+          🌱
+        </span>
+        <p className="text-xs mt-3 ml-4 text-gray-400">{`Today is: ${formatted}`}</p>
+        <figure className="flex justify-center">
           <img
-            className="h-[260px] w-[260px] mt-2 rounded-2xl bg-none"
+            className="h-56 w-56 mt-2 rounded-2xl object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
             src={Photo}
             alt="Plant"
           />
         </figure>
-
-        <div className="card-body">
-          <h2 className="card-title">
+        <div className="p-5">
+          <h2 className="text-2xl font-extrabold text-green-800 flex items-center gap-2 mb-2">
             {Plant}
-            <div className="badge badge-success text-gray-800">{careLevel}</div>
+            <span className="bg-green-200 text-green-800 text-xs font-bold px-2 py-1 rounded-full shadow">
+              {careLevel}
+            </span>
           </h2>
-          <p className="text-gray-600">{description}</p>
-
-          <div className="card-actions justify-end">
-            <div className="badge badge-secondary">{wateringFrequency}</div>
+          <p className="text-gray-700 mb-4 line-clamp-3">{description}</p>
+          <div className="flex items-center justify-between mb-4">
+            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold shadow">
+              {wateringFrequency}
+            </span>
+            <Link
+              to={`/plantDetails/${_id}`}
+              className="bg-gradient-to-r from-green-400 to-green-600 text-white font-bold px-4 py-2 rounded-xl shadow hover:from-green-500 hover:to-green-700 transition-all duration-200"
+            >
+              View Details
+            </Link>
           </div>
-
-          <Link
-            to={`/plantDetails/${_id}`}
-            className="btn bg-violet-600 hover:bg-violet-800  hover:p-2"
-          >
-            View Details
-          </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

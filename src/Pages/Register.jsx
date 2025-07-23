@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
   const { createUser } = use(AuthContext);
-  // console.log(createUser);
 
   const handleSignUp = e => {
     e.preventDefault();
@@ -17,16 +16,10 @@ const Register = () => {
       ...rest,
     };
 
-    console.log(email, password, userProfile);
-
-    //create  user in the firebase
-
+    // Create user in Firebase
     createUser(email, password)
       .then(result => {
-        console.log(result.user);
-
-        //save profile info in the db
-
+        // Save profile info in the db
         fetch('https://simple-mango-server.vercel.app/users', {
           method: 'POST',
           headers: {
@@ -38,7 +31,7 @@ const Register = () => {
           .then(data => {
             if (data.insertedId) {
               Swal.fire({
-                title: 'Sign in Successfully',
+                title: 'Sign up Successfully',
                 icon: 'success',
                 draggable: true,
               });
@@ -49,114 +42,144 @@ const Register = () => {
         console.log(error);
       });
   };
+
   return (
-    <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8  bg-blue-100 dark:text-black mx-auto my-4">
-      <h2 className="mb-3 text-3xl font-semibold text-center">Sign Up</h2>
-      <p className="text-sm text-center dark:text-gray-800">
-        If you have an account?
-        <Link
-          to={'/login'}
-          href="#"
-          rel="noopener noreferrer"
-          className="focus:underline hover:underline text-purple-500"
-        >
-          Login here
-        </Link>
-      </p>
-      <div className="my-6 space-y-4">
-        <button
-          aria-label="Login with Google"
-          type="button"
-          className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32 32"
-            className="w-5 h-5 fill-current"
-          >
-            <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
-          </svg>
-          <p>Login with Google</p>
-        </button>
-      </div>
-      <div className="flex items-center w-full my-4">
-        <hr className="w-full dark:text-gray-600" />
-        <p className="px-3 dark:text-gray-600">OR</p>
-        <hr className="w-full dark:text-gray-600" />
-      </div>
-      <form
-        onSubmit={handleSignUp}
-        noValidate=""
-        action=""
-        className="space-y-8"
-      >
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="block text-sm">Name</label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter Your Name"
-              className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="block text-sm">Address</label>
-            <input
-              type="text"
-              name="Address"
-              placeholder="Enter Your Address"
-              className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="block text-sm">Photo</label>
-            <input
-              type="text"
-              name="Photo"
-              placeholder="Photo URL"
-              className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-            />
-          </div>
-          <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm">
-              Email address
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter Your Email"
-              className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-            />
-          </div>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <label htmlFor="password" className="text-sm">
-                Password
-              </label>
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="text-xs hover:underline dark:text-gray-400"
-              >
-                Forgot password?
-              </a>
-            </div>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter Your Password"
-              className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-            />
-          </div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 via-white to-green-200 px-2 relative overflow-hidden">
+      {/* Decorative plant emoji */}
+      <span className="absolute -top-10 -left-10 text-[8rem] opacity-10 select-none pointer-events-none">
+        🌱
+      </span>
+      <span className="absolute -bottom-10 -right-10 text-[7rem] opacity-10 select-none pointer-events-none">
+        🪴
+      </span>
+      <div className="w-full max-w-md mx-auto bg-white/90 rounded-3xl shadow-2xl p-8 md:p-12 flex flex-col items-center animate-fade-in-up">
+        <img
+          src="https://i.ibb.co/QFqvKGYS/att.jpg"
+          alt="Plant Logo"
+          className="w-20 h-20 rounded-full shadow-lg border-4 border-green-200 mb-4 animate-bounce-slow"
+        />
+        <div className="mb-8 text-center">
+          <h1 className="my-3 text-4xl font-extrabold text-green-800">
+            Sign Up
+          </h1>
+          <p className="text-sm text-green-600">
+            Create your account to join the plant community!
+          </p>
         </div>
-        <button
-          type="submit"
-          className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50"
-        >
-          Sign up
-        </button>
-      </form>
+        <form onSubmit={handleSignUp} className="space-y-8 w-full">
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-semibold text-green-700">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter Your Name"
+                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-green-700">
+                Address
+              </label>
+              <input
+                type="text"
+                name="Address"
+                placeholder="Enter Your Address"
+                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-green-700">
+                Photo
+              </label>
+              <input
+                type="text"
+                name="Photo"
+                placeholder="Photo URL"
+                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-semibold text-green-700"
+              >
+                Email address
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter Your Email"
+                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
+                required
+              />
+            </div>
+            <div>
+              <div className="flex justify-between mb-2">
+                <label
+                  htmlFor="password"
+                  className="text-sm font-semibold text-green-700"
+                >
+                  Password
+                </label>
+                <a
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="text-xs hover:underline text-green-400"
+                >
+                  Forgot password?
+                </a>
+              </div>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter Your Password"
+                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
+                required
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="w-full px-8 py-3 font-bold rounded-xl bg-gradient-to-r from-green-400 to-green-600 text-white shadow-lg hover:from-green-500 hover:to-green-700 transition-all duration-200 animate-bounce"
+          >
+            Sign up
+          </button>
+          <p className="px-6 text-sm text-center text-green-700">
+            Already have an account?{' '}
+            <Link
+              to={'/login'}
+              className="hover:underline text-green-500 font-semibold"
+            >
+              Login here
+            </Link>
+            .
+          </p>
+        </form>
+      </div>
+      <style>
+        {`
+          @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(40px);}
+            100% { opacity: 1; transform: translateY(0);}
+          }
+          .animate-fade-in-up {
+            animation: fade-in-up 0.7s cubic-bezier(.39,.575,.565,1.000) both;
+          }
+          @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-12px);}
+          }
+          .animate-bounce-slow {
+            animation: bounce-slow 2.5s infinite;
+          }
+        `}
+      </style>
     </div>
   );
 };

@@ -16,8 +16,9 @@ import MyPlant from './Components/MyPlant.jsx';
 import Update from './Components/Update.jsx';
 import AuthProvider from './Pages/AuthProvider.jsx';
 import Users from './Pages/Users.jsx';
-import All from './Components/All.jsx';
+
 import AllData from './Components/AllData.jsx';
+import AllOpen from './Components/AllOpen.jsx';
 // import PrivateRoute from './Pages/PrivateRoute.jsx';
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       {
         path: 'all',
 
-        Component: All,
+        Component: AllOpen,
       },
       {
         path: 'allTrees',

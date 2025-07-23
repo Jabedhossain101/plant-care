@@ -6,10 +6,7 @@ const AddMango = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    // console.log(formData.entries());
     const newMango = Object.fromEntries(formData.entries());
-    console.log(newMango);
-
     fetch('https://simple-mango-server.vercel.app/mangos', {
       method: 'POST',
       headers: {
@@ -20,7 +17,6 @@ const AddMango = () => {
       .then(res => res.json())
       .then(data => {
         if (data.insertedId) {
-          console.log('added successfully');
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -30,43 +26,59 @@ const AddMango = () => {
           });
         }
       });
-    //send coffee data to the db server
   };
 
   return (
-    <div>
-      <div className="p-12 text-center">
-        <h1 className="text-5xl">Add Plant</h1>
-        <p className="text-fuchsia-400 m-4">
-          Mango is called the king of fruits. It is sweet, juicy, and full of
-          vitamins. People love to eat mangoes during the summer season.
+    <div className="min-h-screen bg-gradient-to-br from-green-100 via-white to-green-50 flex items-center justify-center py-8 px-2">
+      <div className="w-full max-w-3xl mx-auto bg-white/90 rounded-3xl shadow-2xl p-6 md:p-12 relative overflow-hidden">
+        {/* Decorative plant emoji */}
+        <span className="absolute -top-8 -left-8 text-[7rem] opacity-10 select-none pointer-events-none">
+          🌱
+        </span>
+        <span className="absolute -bottom-8 -right-8 text-[6rem] opacity-10 select-none pointer-events-none">
+          🪴
+        </span>
+        <h1 className="text-center text-3xl md:text-4xl font-extrabold text-green-800 mb-2">
+          Add a New Plant
+        </h1>
+        <p className="text-center text-green-600 mb-8">
+          Share your favorite plant with the world! Fill out the details below.
         </p>
-
         <form onSubmit={handleAddPlant}>
-          <div className="space-y-4 gap-3 grid grid-cols-1 md:grid-cols-2">
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">Plant Image</label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                Plant Image
+              </label>
               <input
                 type="text"
                 name="Photo"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
                 placeholder="Photo URL"
+                required
               />
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">Plant Name</label>
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                Plant Name
+              </label>
               <input
                 type="text"
                 name="Plant"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
                 placeholder="Enter plant name"
+                required
               />
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">Category</label>
-              <select name="category" className="select select-bordered w-full">
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                Category
+              </label>
+              <select
+                name="category"
+                className="select select-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
+                required
+              >
                 <option disabled selected>
                   Select category
                 </option>
@@ -77,22 +89,26 @@ const AddMango = () => {
                 <option>Tree</option>
               </select>
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">Description</label>
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm md:col-span-2">
+              <label className="block text-green-700 font-semibold mb-1">
+                Description
+              </label>
               <textarea
                 name="description"
-                className="textarea textarea-bordered w-full"
+                className="textarea textarea-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
                 placeholder="Write a description..."
                 rows={3}
+                required
               ></textarea>
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">Care Level</label>
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                Care Level
+              </label>
               <select
                 name="careLevel"
-                className="select select-bordered w-full"
+                className="select select-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
+                required
               >
                 <option disabled selected>
                   Select care level
@@ -102,68 +118,80 @@ const AddMango = () => {
                 <option>Difficult</option>
               </select>
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
                 Watering Frequency (e.g., every 3 days)
               </label>
               <input
                 type="text"
                 name="wateringFrequency"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
                 placeholder="Enter watering frequency"
+                required
               />
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">Last Watered Date</label>
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                Last Watered Date
+              </label>
               <input
                 type="date"
                 name="lastWateredDate"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
+                required
               />
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">Next Watering Date</label>
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                Next Watering Date
+              </label>
               <input
                 type="date"
                 name="nextWateringDate"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
+                required
               />
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">Health Status</label>
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                Health Status
+              </label>
               <input
                 type="text"
                 name="healthStatus"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
                 placeholder="Enter health status"
+                required
               />
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">User Email</label>
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                User Email
+              </label>
               <input
                 type="email"
                 name="userEmail"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
                 placeholder="Enter user email"
+                required
               />
             </fieldset>
-
-            <fieldset className="fieldset bg-gray-400 border-base-300 rounded-box w-full border p-4">
-              <label className="label">User Name</label>
+            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
+              <label className="block text-green-700 font-semibold mb-1">
+                User Name
+              </label>
               <input
                 type="text"
                 name="userName"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
                 placeholder="Enter user name"
+                required
               />
             </fieldset>
           </div>
-          <button className="btn bg-blue-600 w-full mt-1.5">Add Plant</button>
+          <button className="w-full mt-8 py-3 rounded-xl bg-gradient-to-r from-green-400 to-green-600 text-white font-bold text-lg shadow-lg hover:from-green-500 hover:to-green-700 transition-all duration-200">
+            Add Plant
+          </button>
         </form>
       </div>
     </div>
