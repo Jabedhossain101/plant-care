@@ -19,7 +19,7 @@ const Home = () => {
       <h1 className="text-center text-2xl text-violet-600 underline">
         Explore our <span className="text-fuchsia-500">Plant House</span>
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto my-6">
         {mangos.map(mango => (
           <AllPlant key={mango._id} mango={mango} />
         ))}

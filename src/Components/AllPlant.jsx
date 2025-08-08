@@ -24,8 +24,8 @@ const AllPlant = ({ mango }) => {
   }
 
   return (
-    <div className="max-w-sm mx-auto m-6">
-      <div className="relative bg-gradient-to-br from-green-100 via-white to-green-50 rounded-3xl shadow-2xl hover:shadow-green-300 transition-shadow duration-300 overflow-hidden group">
+    <div className="max-w-7xl mx-auto m-6">
+      <div className="w-[200px] h-[190px] relative bg-gradient-to-br from-green-100 via-white to-green-50 rounded-3xl shadow-2xl hover:shadow-green-300 transition-shadow duration-300 overflow-hidden group">
         {/* Decorative leaf icon */}
         <span className="absolute top-3 right-3 text-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-300 select-none pointer-events-none">
           🌱
@@ -33,30 +33,27 @@ const AllPlant = ({ mango }) => {
         <p className="text-xs mt-3 ml-4 text-gray-400">{`Today is: ${formatted}`}</p>
         <figure className="flex justify-center">
           <img
-            className="h-56 w-56 mt-2 rounded-2xl object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
+            className="h-20 w-20 mt-2 rounded-2xl object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
             src={Photo}
             alt="Plant"
           />
         </figure>
         <div className="p-5">
-          <h2 className="text-2xl font-extrabold text-green-800 flex items-center gap-2 mb-2">
+          <h2 className="text-sm font-extrabold text-green-800 flex items-center gap-2 mb-2">
             {Plant}
-            <span className="bg-green-200 text-green-800 text-xs font-bold px-2 py-1 rounded-full shadow">
-              {careLevel}
-            </span>
+            <Link
+              to={`/plantDetails/${_id}`}
+              className="bg-gradient-to-r from-green-400 to-green-600 text-white p-1 text-center rounded-xl shadow hover:from-green-500 hover:to-green-700 transition-all duration-200"
+            >
+              View Details
+            </Link>
           </h2>
-          <p className="text-gray-700 mb-4 line-clamp-3">{description}</p>
+          {/* <p className="text-gray-700 mb-4 line-clamp-3">{description}</p>
           <div className="flex items-center justify-between mb-4">
             <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold shadow">
               {wateringFrequency}
             </span>
-            <Link
-              to={`/plantDetails/${_id}`}
-              className="bg-gradient-to-r from-green-400 to-green-600 text-white font-bold px-4 py-2 rounded-xl shadow hover:from-green-500 hover:to-green-700 transition-all duration-200"
-            >
-              View Details
-            </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

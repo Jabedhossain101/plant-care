@@ -1,18 +1,20 @@
 import React from 'react';
+import { useLoaderData } from 'react-router';
+import AllOpen from './AllOpen';
 // import { useLoaderData } from 'react-router';
 
 const AllData = () => {
-  // const data = useLoaderData();
-  // console.log(data);
+  const data = useLoaderData();
+  console.log(data);
   return (
     <div>
       <div>
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {data.map(singleData => (
-            <All
+            <AllOpen
               key={singleData._id} singleData={singleData} />
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   );

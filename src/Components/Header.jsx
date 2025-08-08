@@ -87,7 +87,7 @@ const Header = () => {
             className="text-2xl font-extrabold tracking-wide text-green-800"
             to="/"
           >
-            GREEN<span className="text-green-500">SPHERE</span>
+            THYME<span className="text-green-500">OUT</span>
           </Link>
         </div>
         {/* Desktop Nav */}

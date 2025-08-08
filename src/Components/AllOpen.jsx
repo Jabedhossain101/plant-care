@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
-const All = ({ singleData }) => {
+const AllOpen = ({ singleData }) => {
   const { _id, Photo, Plant, wateringFrequency, careLevel, description } =
     singleData;
   const today = new Date();
@@ -25,12 +25,12 @@ const All = ({ singleData }) => {
 
   return (
     <>
-      <div className="card bg-base-400 m-6 w-96 mx-auto shadow-lg hover:shadow-2xl border-b-4 border-l-4 border-gray-400">
+      <div className="card bg-base-400 m-6 w-[200px] mx-auto shadow-lg hover:shadow-2xl border-b-4 border-l-4 border-gray-400">
         <p className="text-sm mt-1 ml-2">{`Today is: ${formatted}`}</p>
 
         <figure>
           <img
-            className="h-[260px] w-[260px] mt-2 rounded-2xl bg-none"
+            className="h-[60px] w-[60px] mt-2 rounded-2xl bg-none"
             src={Photo}
             alt="Plant"
           />
@@ -59,4 +59,4 @@ const All = ({ singleData }) => {
   );
 };
 
-export default All;
+export default AllOpen;

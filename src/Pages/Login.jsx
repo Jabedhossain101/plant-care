@@ -18,6 +18,8 @@ const Login = () => {
 
     signInUser(email, password)
       .then(result => {
+        console.log(result.user);
+        navigate(from);
         const signInInfo = {
           email,
           lastSignInTime: result.user?.metadata.lastSignInTime,

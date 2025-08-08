@@ -19,6 +19,7 @@ import Users from './Pages/Users.jsx';
 
 import AllData from './Components/AllData.jsx';
 import AllOpen from './Components/AllOpen.jsx';
+import PrivateRoute from './Firebase/PrivateRoute.jsx';
 // import PrivateRoute from './Pages/PrivateRoute.jsx';
 const router = createBrowserRouter([
   {
@@ -42,7 +43,6 @@ const router = createBrowserRouter([
       },
       {
         path: 'all',
-
         Component: AllOpen,
       },
       {
@@ -59,9 +59,10 @@ const router = createBrowserRouter([
         Component: Register,
       },
       {
-        path: 'allMango',
+        path: 'all',
         Component: AllPlant,
       },
+     
       {
         path: 'myPlant',
         Component: MyPlant,
@@ -82,7 +83,11 @@ const router = createBrowserRouter([
         path: 'plantDetails/:id',
         loader: ({ params }) =>
           fetch(`https://simple-mango-server.vercel.app/mangos/${params.id}`),
-        Component: PlantDetails,
+        element: (
+          <PrivateRoute>
+            <PlantDetails></PlantDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

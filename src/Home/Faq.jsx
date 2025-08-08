@@ -36,7 +36,7 @@ const Faq = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto my-12 px-4">
+    <section className="max-w-7xl mx-auto my-12 px-4">
       <div className="bg-gradient-to-br from-green-100 via-white to-green-50 rounded-3xl shadow-2xl p-8 md:p-12">
         <h2 className="text-center text-3xl md:text-4xl font-extrabold text-green-800 mb-8 underline decoration-green-400">
           Frequently Asked Questions
