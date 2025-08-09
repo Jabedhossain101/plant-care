@@ -25,7 +25,7 @@ const AllPlant = ({ mango }) => {
 
   return (
     <div className="max-w-7xl mx-auto m-6">
-      <div className="w-[200px] h-[190px] relative rounded-2xl shadow-xl hover:shadow-green-200 transition-shadow duration-300 overflow-hidden group">
+      <div className="w-[180px] h-[190px] relative rounded-2xl shadow-xl hover:shadow-green-200 transition-shadow duration-300 overflow-hidden group">
         {/* Decorative leaf icon */}
         <span className="absolute top-3 right-3 text-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-300 select-none pointer-events-none">
           🌱

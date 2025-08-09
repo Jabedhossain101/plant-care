@@ -97,14 +97,14 @@ const Header = () => {
           {user ? (
             <button
               onClick={handleLogout}
-              className="px-5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-pink-600 text-white font-bold shadow hover:from-pink-500 hover:to-pink-700 transition-all"
+              className="px-5 py-2 rounded-xl bg-gradient-to-r from-green-400 to-green-600 text-white font-bold shadow hover:from-pink-500 hover:to-pink-700 transition-all"
             >
               Sign out
             </button>
           ) : (
             <>
               <Link to="/login">
-                <button className="px-5 py-2 border border-blue-500 text-blue-500 rounded-xl font-semibold hover:bg-blue-50 transition">
+                <button className="px-5 py-2 border border-green-500 text-green-500 rounded-xl font-semibold hover:bg-blue-50 transition">
                   Login
                 </button>
               </Link>
@@ -149,7 +149,7 @@ const Header = () => {
                       handleLogout();
                       setMenuOpen(false);
                     }}
-                    className="w-full px-4 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-pink-600 text-white font-bold shadow hover:from-pink-500 hover:to-pink-700 transition-all"
+                    className="w-full px-4 py-2 rounded-xl bg-gradient-to-r from-green-400 to-green-600 text-white font-bold shadow hover:from-green-500 hover:to-green-700 transition-all"
                   >
                     Sign out
                   </button>
@@ -157,7 +157,7 @@ const Header = () => {
                   <div className="flex flex-col gap-2">
                     <Link to="/login">
                       <button
-                        className="w-full px-4 py-2 border border-blue-500 text-blue-500 rounded-xl font-semibold hover:bg-blue-50 transition"
+                        className="w-full px-4 py-2 border border-green-500 text-green-500 rounded-xl font-semibold hover:bg-blue-50 transition"
                         onClick={() => setMenuOpen(false)}
                       >
                         Login
