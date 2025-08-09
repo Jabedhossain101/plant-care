@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 via-white to-green-200 px-2 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center px-2 relative overflow-hidden">
       {/* Decorative plant emoji */}
       <span className="absolute -top-10 -left-10 text-[8rem] opacity-10 select-none pointer-events-none">
         🌱
