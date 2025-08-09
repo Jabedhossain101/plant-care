@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { format } from 'date-fns';
 
 const AllPlant = ({ mango }) => {
-  const { _id, Photo, Plant, wateringFrequency, careLevel, description } =
+  const { _id, Photo, Plant } =
     mango;
   const today = new Date();
   const formatted = format(today, 'PPP');
@@ -25,7 +25,7 @@ const AllPlant = ({ mango }) => {
 
   return (
     <div className="max-w-7xl mx-auto m-6">
-      <div className="w-[200px] h-[190px] relative bg-gradient-to-br from-green-100 via-white to-green-50 rounded-3xl shadow-2xl hover:shadow-green-300 transition-shadow duration-300 overflow-hidden group">
+      <div className="w-[200px] h-[190px] relative rounded-2xl shadow-xl hover:shadow-green-200 transition-shadow duration-300 overflow-hidden group">
         {/* Decorative leaf icon */}
         <span className="absolute top-3 right-3 text-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-300 select-none pointer-events-none">
           🌱
@@ -33,7 +33,7 @@ const AllPlant = ({ mango }) => {
         <p className="text-xs mt-3 ml-4 text-gray-400">{`Today is: ${formatted}`}</p>
         <figure className="flex justify-center">
           <img
-            className="h-20 w-20 mt-2 rounded-2xl object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
+            className="h-20 w-20 mt-2 rounded-2xl object-cover shadow-lg border-4 border-white group-hover:scale-115 transition-transform duration-300"
             src={Photo}
             alt="Plant"
           />

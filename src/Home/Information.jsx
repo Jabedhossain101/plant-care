@@ -31,7 +31,7 @@ const tips = [
 const Information = () => {
   return (
     <div className="max-w-7xl mx-auto my-8 px-4">
-      <div className="bg-gradient-to-br from-green-100 via-green-50 to-white rounded-3xl shadow-2xl p-6 md:p-10">
+      <div className=" rounded-3xl shadow-xl p-6 md:p-10">
         <h1 className="text-center font-extrabold text-3xl md:text-4xl text-green-800 mb-8 underline decoration-green-400">
           Top Plant Care Mistakes to Avoid
         </h1>

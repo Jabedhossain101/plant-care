@@ -16,10 +16,10 @@ const Home = () => {
         <Banner></Banner>
       </div>
       <Purpose></Purpose>
-      <h1 className="text-center text-2xl text-violet-600 underline">
-        Explore our <span className="text-fuchsia-500">Plant House</span>
+      <h1 className="text-center font-extrabold text-3xl md:text-4xl text-green-800 mb-6 underline decoration-green-400">
+        Explore our <span>Plant House</span>
       </h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto my-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto my-6">
         {mangos.map(mango => (
           <AllPlant key={mango._id} mango={mango} />
         ))}

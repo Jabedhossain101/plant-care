@@ -3,7 +3,7 @@ import React from 'react';
 const Purpose = () => {
   return (
     <div className="max-w-7xl mx-auto my-10">
-      <div className="bg-gradient-to-br from-green-100 via-white to-green-50 rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden">
+      <div className=" rounded-3xl shadow-xl p-8 md:p-12 relative overflow-hidden">
         {/* Decorative Leaf Icon */}
         <div className="absolute -top-8 -left-8 opacity-20 text-green-300 text-[8rem] pointer-events-none select-none">
           🌿

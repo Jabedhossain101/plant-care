@@ -9,7 +9,7 @@ const AllData = () => {
   return (
     <div>
       <div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {data.map(singleData => (
             <AllOpen
               key={singleData._id} singleData={singleData} />

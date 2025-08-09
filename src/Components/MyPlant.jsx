@@ -32,22 +32,22 @@ const MyPlant = ({ singleData }) => {
   };
 
   return (
-    <div className="max-w-xs w-full mx-auto m-6 bg-gradient-to-br from-green-50 via-white to-green-100 rounded-3xl shadow-2xl hover:shadow-green-300 transition-shadow duration-300 overflow-hidden group relative">
+    <div className="w-full mx-auto m-6 rounded-3xl shadow-xl overflow-hidden group relative">
       {/* Decorative floating leaf */}
       <span className="absolute -top-4 -left-4 text-5xl opacity-10 group-hover:opacity-20 transition-opacity duration-300 select-none pointer-events-none">
         🪴
       </span>
       {/* Card Image */}
-      <figure className="flex justify-center bg-gradient-to-tr from-green-200 via-green-100 to-white pt-8 pb-4 px-6">
+      <figure className="flex justify-center pt-8 pb-4 px-6">
         <img
           src={Photo}
           alt={Plant}
-          className="rounded-2xl h-40 w-40 object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
+          className="rounded-2xl w-[70px] object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
         />
       </figure>
       {/* Card Content */}
       <div className="px-6 pb-6 pt-2 flex flex-col items-center text-center">
-        <h2 className="text-2xl font-extrabold text-green-800 mb-1 flex items-center gap-2">
+        <h2 className="text-lg font-extrabold text-green-800 mb-1 flex items-center gap-2">
           {Plant}
           <span className="bg-green-200 text-green-800 text-xs font-bold px-2 py-1 rounded-full shadow">
             {careLevel || 'Medium'}
