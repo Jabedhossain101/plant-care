@@ -6,7 +6,7 @@ import Footer from '../Components/Footer';
 const Layout = () => {
   return (
     <div>
-      <div className="max-w-7xl mx-auto">
+      <div className="">
         <div className="sticky top-0 z-50 bg-white shadow">
           {' '}
           <Header></Header>
