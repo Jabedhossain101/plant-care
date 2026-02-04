@@ -38,7 +38,7 @@ const MyPlant = ({ singleData }) => {
         🪴
       </span>
       {/* Card Image */}
-      <figure className="flex justify-center pt-8 pb-4 px-6">
+      <figure className="flex justify-center pt-7 pb-3 px-6">
         <img
           src={Photo}
           alt={Plant}
