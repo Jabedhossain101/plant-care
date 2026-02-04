@@ -33,11 +33,11 @@ const MyPlant = ({ singleData }) => {
 
   return (
     <div className="w-full mx-auto m-6 rounded-3xl shadow-xl overflow-hidden group relative">
-      {/* Decorative floating leaf */}
+    
       <span className="absolute -top-4 -left-4 text-5xl opacity-10 group-hover:opacity-20 transition-opacity duration-300 select-none pointer-events-none">
         🪴
       </span>
-      {/* Card Image */}
+    
       <figure className="flex justify-center pt-7 pb-3 px-6">
         <img
           src={Photo}
@@ -47,7 +47,7 @@ const MyPlant = ({ singleData }) => {
       </figure>
       {/* Card Content */}
       <div className="px-6 pb-6 pt-2 flex flex-col items-center text-center">
-        <h2 className="text-lg font-extrabold text-green-800 mb-1 flex items-center gap-2">
+        <h2 className="text-lg font-extrabold text-green-600 mb-1 flex items-center gap-2">
           {Plant}
           <span className="bg-green-200 text-green-800 text-xs font-bold px-2 py-1 rounded-full shadow">
             {careLevel || 'Medium'}
