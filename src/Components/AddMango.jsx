@@ -7,192 +7,209 @@ const AddMango = () => {
     const form = e.target;
     const formData = new FormData(form);
     const newMango = Object.fromEntries(formData.entries());
+
     fetch('https://simple-mango-server.vercel.app/mangos', {
       method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newMango),
     })
       .then(res => res.json())
       .then(data => {
         if (data.insertedId) {
           Swal.fire({
-            position: 'top-end',
+            title: 'Record Established',
+            text: 'Botanical specimen has been archived.',
             icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1500,
+            confirmButtonColor: '#059669',
+            customClass: { popup: 'rounded-[2rem] font-sans' },
           });
+          form.reset();
         }
       });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-100 via-white to-green-50 flex items-center justify-center py-8 px-2">
-      <div className="w-full max-w-3xl mx-auto bg-white/90 rounded-3xl shadow-2xl p-6 md:p-12 relative overflow-hidden">
-        {/* Decorative plant emoji */}
-        <span className="absolute -top-8 -left-8 text-[7rem] opacity-10 select-none pointer-events-none">
-          🌱
-        </span>
-        <span className="absolute -bottom-8 -right-8 text-[6rem] opacity-10 select-none pointer-events-none">
-          🪴
-        </span>
-        <h1 className="text-center text-3xl md:text-4xl font-extrabold text-green-800 mb-2">
-          Add a New Plant
-        </h1>
-        <p className="text-center text-green-600 mb-8">
-          Share your favorite plant with the world! Fill out the details below.
-        </p>
-        <form onSubmit={handleAddPlant}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                Plant Image
-              </label>
-              <input
-                type="text"
-                name="Photo"
-                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                placeholder="Photo URL"
-                required
+    <div className="min-h-screen bg-[#fcfcf9] py-20 px-6 relative overflow-hidden font-sans flex items-center justify-center">
+      {/* 1. Kinetic Background Text */}
+      <div className="absolute top-10 left-10 pointer-events-none z-0 opacity-[0.02] select-none">
+        <h2 className="text-[18vw] font-black leading-none">REGISTRY</h2>
+      </div>
+
+      <div className="w-full max-w-5xl bg-white rounded-[3rem] shadow-2xl border border-slate-100 overflow-hidden relative z-10">
+        <div className="grid grid-cols-12">
+          {/* Left Side: Info & Decorative */}
+          <div className="col-span-12 lg:col-span-4 bg-slate-900 p-12 text-white flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute inset-0 opacity-20">
+              <img
+                src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?q=80&w=1000"
+                className="w-full h-full object-cover"
+                alt="bg"
               />
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                Plant Name
-              </label>
-              <input
-                type="text"
-                name="Plant"
-                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                placeholder="Enter plant name"
-                required
-              />
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                Category
-              </label>
-              <select
-                name="category"
-                className="select select-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                required
-              >
-                <option disabled selected>
-                  Select category
-                </option>
-                <option>Succulent</option>
-                <option>Fern</option>
-                <option>Flowering</option>
-                <option>Herb</option>
-                <option>Tree</option>
-              </select>
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm md:col-span-2">
-              <label className="block text-green-700 font-semibold mb-1">
-                Description
-              </label>
-              <textarea
-                name="description"
-                className="textarea textarea-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                placeholder="Write a description..."
-                rows={3}
-                required
-              ></textarea>
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                Care Level
-              </label>
-              <select
-                name="careLevel"
-                className="select select-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                required
-              >
-                <option disabled selected>
-                  Select care level
-                </option>
-                <option>Easy</option>
-                <option>Moderate</option>
-                <option>Difficult</option>
-              </select>
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                Watering Frequency (e.g., every 3 days)
-              </label>
-              <input
-                type="text"
-                name="wateringFrequency"
-                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                placeholder="Enter watering frequency"
-                required
-              />
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                Last Watered Date
-              </label>
-              <input
-                type="date"
-                name="lastWateredDate"
-                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                required
-              />
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                Next Watering Date
-              </label>
-              <input
-                type="date"
-                name="nextWateringDate"
-                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                required
-              />
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                Health Status
-              </label>
-              <input
-                type="text"
-                name="healthStatus"
-                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                placeholder="Enter health status"
-                required
-              />
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                User Email
-              </label>
-              <input
-                type="email"
-                name="userEmail"
-                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                placeholder="Enter user email"
-                required
-              />
-            </fieldset>
-            <fieldset className="bg-green-50 border border-green-200 rounded-xl p-4 shadow-sm">
-              <label className="block text-green-700 font-semibold mb-1">
-                User Name
-              </label>
-              <input
-                type="text"
-                name="userName"
-                className="input input-bordered w-full bg-white focus:ring-2 focus:ring-green-300"
-                placeholder="Enter user name"
-                required
-              />
-            </fieldset>
+            </div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-8 w-8 bg-emerald-500 rounded-lg flex items-center justify-center text-xl">
+                  🌿
+                </div>
+                <span className="font-black tracking-tighter uppercase text-lg">
+                  Specimen Log
+                </span>
+              </div>
+              <h2 className="text-4xl font-black leading-tight mb-6">
+                Expand the <br />{' '}
+                <span className="text-emerald-500 italic font-serif font-light">
+                  Green Archive.
+                </span>
+              </h2>
+              <p className="text-slate-400 text-sm leading-relaxed font-medium">
+                Documenting a new species ensures the community has access to
+                precise care protocols and botanical data.
+              </p>
+            </div>
+
+            <div className="relative z-10 pt-10">
+              <span className="text-[10px] font-bold tracking-[0.4em] text-emerald-600 uppercase">
+                Est. MMXXVI
+              </span>
+            </div>
           </div>
-          <button className="w-full mt-8 py-3 rounded-xl bg-gradient-to-r from-green-400 to-green-600 text-white font-bold text-lg shadow-lg hover:from-green-500 hover:to-green-700 transition-all duration-200">
-            Add Plant
-          </button>
-        </form>
+
+          {/* Right Side: Form */}
+          <div className="col-span-12 lg:col-span-8 p-8 md:p-16">
+            <div className="mb-10 flex items-center justify-between">
+              <div>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">
+                  Plant Identification
+                </h3>
+                <p className="text-slate-400 text-xs mt-1">
+                  Please fill out all technical specifications.
+                </p>
+              </div>
+              <span className="text-slate-100 font-black text-5xl hidden sm:block">
+                #00
+              </span>
+            </div>
+
+            <form
+              onSubmit={handleAddPlant}
+              className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8"
+            >
+              {/* Fieldset logic replaced with modern group styling */}
+              <div className="group col-span-1">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors block mb-2">
+                  Plant Name
+                </label>
+                <input
+                  type="text"
+                  name="Plant"
+                  placeholder="e.g. Monstera Deliciosa"
+                  className="w-full bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all py-2 text-slate-800 font-medium"
+                  required
+                />
+              </div>
+
+              <div className="group col-span-1">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors block mb-2">
+                  Image Source
+                </label>
+                <input
+                  type="text"
+                  name="Photo"
+                  placeholder="HTTPS://IMAGE.URL"
+                  className="w-full bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all py-2 text-slate-800 font-medium"
+                  required
+                />
+              </div>
+
+              <div className="group col-span-1">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors block mb-2">
+                  Category
+                </label>
+                <select
+                  name="category"
+                  className="w-full bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all py-2 text-slate-800 font-medium cursor-pointer"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Select Specimen Class
+                  </option>
+                  <option>Succulent</option>
+                  <option>Fern</option>
+                  <option>Flowering</option>
+                  <option>Herb</option>
+                  <option>Tree</option>
+                </select>
+              </div>
+
+              <div className="group col-span-1">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors block mb-2">
+                  Care Difficulty
+                </label>
+                <select
+                  name="careLevel"
+                  className="w-full bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all py-2 text-slate-800 font-medium cursor-pointer"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Maintenance Level
+                  </option>
+                  <option>Easy</option>
+                  <option>Moderate</option>
+                  <option>Difficult</option>
+                </select>
+              </div>
+
+              <div className="group col-span-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors block mb-2">
+                  Botanical Description
+                </label>
+                <textarea
+                  name="description"
+                  rows={2}
+                  className="w-full bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all py-2 text-slate-800 font-medium resize-none"
+                  placeholder="Primary characteristics..."
+                  required
+                ></textarea>
+              </div>
+
+              <div className="group col-span-1">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors block mb-2">
+                  Watering Routine
+                </label>
+                <input
+                  type="text"
+                  name="wateringFrequency"
+                  placeholder="e.g. Every 7 days"
+                  className="w-full bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all py-2 text-slate-800 font-medium"
+                  required
+                />
+              </div>
+
+              <div className="group col-span-1">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors block mb-2">
+                  Health Status
+                </label>
+                <input
+                  type="text"
+                  name="healthStatus"
+                  placeholder="e.g. Thriving"
+                  className="w-full bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all py-2 text-slate-800 font-medium"
+                  required
+                />
+              </div>
+
+              <div className="col-span-2 pt-6">
+                <button
+                  type="submit"
+                  className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-emerald-600 shadow-xl shadow-slate-200 transition-all hover:-translate-y-1 active:scale-95"
+                >
+                  Finalize Registry
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );

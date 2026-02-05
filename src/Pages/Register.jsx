@@ -11,175 +11,191 @@ const Register = () => {
     const form = e.target;
     const formData = new FormData(form);
     const { email, password, ...rest } = Object.fromEntries(formData.entries());
-    const userProfile = {
-      email,
-      ...rest,
-    };
+    const userProfile = { email, ...rest };
 
-    // Create user in Firebase
     createUser(email, password)
       .then(result => {
-        // Save profile info in the db
         fetch('https://simple-mango-server.vercel.app/users', {
           method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-          },
+          headers: { 'content-type': 'application/json' },
           body: JSON.stringify(userProfile),
         })
           .then(res => res.json())
           .then(data => {
             if (data.insertedId) {
               Swal.fire({
-                title: 'Sign up Successfully',
+                title: 'Welcome to the Sphere!',
+                text: 'Your botanical journey starts here.',
                 icon: 'success',
-                draggable: true,
+                confirmButtonColor: '#059669',
+                customClass: { popup: 'rounded-[2rem] font-sans' },
               });
             }
           });
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => console.log(error));
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-2 relative overflow-hidden">
-      {/* Decorative plant emoji */}
-      <span className="absolute -top-10 -left-10 text-[8rem] opacity-10 select-none pointer-events-none">
-        🌱
-      </span>
-      <span className="absolute -bottom-10 -right-10 text-[7rem] opacity-10 select-none pointer-events-none">
-        🪴
-      </span>
-      <div className="w-full max-w-md mx-auto bg-white/90 rounded-3xl shadow-2xl p-8 md:p-12 flex flex-col items-center animate-fade-in-up">
-        <img
-          src="https://i.ibb.co/QFqvKGYS/att.jpg"
-          alt="Plant Logo"
-          className="w-20 h-20 rounded-full shadow-lg border-4 border-green-200 mb-4 animate-bounce-slow"
-        />
-        <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-extrabold text-green-800">
-            Sign Up
-          </h1>
-          <p className="text-sm text-green-600">
-            Create your account to join the plant community!
-          </p>
-        </div>
-        <form onSubmit={handleSignUp} className="space-y-8 w-full">
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-semibold text-green-700">
-                Name
+    <div className="min-h-screen bg-[#fcfcf9] flex items-center justify-center p-6 relative overflow-hidden font-sans">
+      {/* 1. Kinetic Background Text */}
+      <div className="absolute bottom-0 right-0 pointer-events-none z-0 opacity-[0.03] select-none text-right">
+        <h2 className="text-[18vw] font-black leading-none">JOIN</h2>
+      </div>
+
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 bg-white rounded-[3rem] shadow-2xl overflow-hidden relative z-10 border border-slate-100">
+        {/* Left Side: Registration Form (7 Cols) */}
+        <div className="col-span-1 lg:col-span-7 p-8 md:p-16 flex flex-col justify-center bg-white order-2 lg:order-1">
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-emerald-700 font-mono text-[10px] font-bold tracking-[0.4em] uppercase">
+                New Membership
+              </span>
+              <div className="h-[1px] w-8 bg-emerald-200"></div>
+            </div>
+            <h1 className="text-4xl font-black text-slate-900 tracking-tighter mb-2">
+              Create Account.
+            </h1>
+            <p className="text-slate-500 text-sm">
+              Join our global community of plant enthusiasts.
+            </p>
+          </div>
+
+          <form
+            onSubmit={handleSignUp}
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6"
+          >
+            {/* Name Input */}
+            <div className="group col-span-1">
+              <label className="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">
+                Full Name
               </label>
               <input
                 type="text"
                 name="name"
-                placeholder="Enter Your Name"
-                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
+                placeholder="John Doe"
+                className="w-full px-0 py-3 bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all text-slate-800 font-medium"
                 required
               />
             </div>
-            <div>
-              <label className="block text-sm font-semibold text-green-700">
-                Address
-              </label>
-              <input
-                type="text"
-                name="Address"
-                placeholder="Enter Your Address"
-                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-green-700">
-                Photo
-              </label>
-              <input
-                type="text"
-                name="Photo"
-                placeholder="Photo URL"
-                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
-                required
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold text-green-700"
-              >
-                Email address
+
+            {/* Email Input */}
+            <div className="group col-span-1">
+              <label className="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">
+                Email Address
               </label>
               <input
                 type="email"
                 name="email"
-                placeholder="Enter Your Email"
-                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
+                placeholder="name@domain.com"
+                className="w-full px-0 py-3 bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all text-slate-800 font-medium"
                 required
               />
             </div>
-            <div>
-              <div className="flex justify-between mb-2">
-                <label
-                  htmlFor="password"
-                  className="text-sm font-semibold text-green-700"
-                >
-                  Password
-                </label>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="text-xs hover:underline text-green-400"
-                >
-                  Forgot password?
-                </a>
-              </div>
+
+            {/* Address Input */}
+            <div className="group col-span-1">
+              <label className="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">
+                Location
+              </label>
+              <input
+                type="text"
+                name="Address"
+                placeholder="City, Country"
+                className="w-full px-0 py-3 bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all text-slate-800 font-medium"
+                required
+              />
+            </div>
+
+            {/* Photo URL Input */}
+            <div className="group col-span-1">
+              <label className="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">
+                Avatar URL
+              </label>
+              <input
+                type="text"
+                name="Photo"
+                placeholder="https://image.path"
+                className="w-full px-0 py-3 bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all text-slate-800 font-medium"
+                required
+              />
+            </div>
+
+            {/* Password Input */}
+            <div className="group col-span-2">
+              <label className="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">
+                Security Password
+              </label>
               <input
                 type="password"
                 name="password"
-                placeholder="Enter Your Password"
-                className="w-full px-3 py-2 border border-green-200 rounded-lg bg-white focus:ring-2 focus:ring-green-300 transition"
+                placeholder="••••••••"
+                className="w-full px-0 py-3 bg-transparent border-b-2 border-slate-100 focus:border-emerald-500 outline-none transition-all text-slate-800 font-medium"
                 required
               />
             </div>
-          </div>
-          <button
-            type="submit"
-            className="w-full px-8 py-3 font-bold rounded-xl bg-gradient-to-r from-green-400 to-green-600 text-white shadow-lg hover:from-green-500 hover:to-green-700 transition-all duration-200 animate-bounce"
-          >
-            Sign up
-          </button>
-          <p className="px-6 text-sm text-center text-green-700">
-            Already have an account?{' '}
+
+            <div className="col-span-2 pt-6">
+              <button
+                type="submit"
+                className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-emerald-600 shadow-xl shadow-slate-200 transition-all hover:-translate-y-1 active:scale-95"
+              >
+                Establish Membership
+              </button>
+            </div>
+          </form>
+
+          <p className="mt-10 text-center text-slate-500 text-sm">
+            Already a member?{' '}
             <Link
-              to={'/login'}
-              className="hover:underline text-green-500 font-semibold"
+              to="/login"
+              className="text-emerald-600 font-bold hover:text-slate-900 transition-colors"
             >
-              Login here
+              Sign In
             </Link>
-            .
           </p>
-        </form>
+        </div>
+
+        {/* Right Side: Visual Section (5 Cols) */}
+        <div className="col-span-1 lg:col-span-5 bg-slate-900 relative order-1 lg:order-2">
+          <div className="absolute inset-0 opacity-50">
+            <img
+              src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1000&auto=format&fit=crop"
+              alt="Nature Aesthetic"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-transparent to-slate-900/80"></div>
+          </div>
+
+          <div className="relative z-10 p-12 h-full flex flex-col justify-between">
+            <Link to="/" className="flex items-center gap-3">
+              <img
+                src="https://i.ibb.co/QFqvKGYS/att.jpg"
+                className="h-10 w-10 rounded-xl"
+                alt="logo"
+              />
+              <span className="text-white font-black tracking-tighter uppercase text-xl">
+                Green
+                <span className="text-emerald-500 italic font-serif">
+                  Sphere
+                </span>
+              </span>
+            </Link>
+
+            <div className="mb-10">
+              <span className="text-emerald-500 font-mono text-[10px] font-bold tracking-[0.4em] uppercase block mb-4">
+                Exclusive Community
+              </span>
+              <h2 className="text-3xl font-black text-white leading-tight">
+                Unlock <br />{' '}
+                <span className="text-emerald-400 italic font-serif font-light">
+                  Botanical Privileges.
+                </span>
+              </h2>
+            </div>
+          </div>
+        </div>
       </div>
-      <style>
-        {`
-          @keyframes fade-in-up {
-            0% { opacity: 0; transform: translateY(40px);}
-            100% { opacity: 1; transform: translateY(0);}
-          }
-          .animate-fade-in-up {
-            animation: fade-in-up 0.7s cubic-bezier(.39,.575,.565,1.000) both;
-          }
-          @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0);}
-            50% { transform: translateY(-12px);}
-          }
-          .animate-bounce-slow {
-            animation: bounce-slow 2.5s infinite;
-          }
-        `}
-      </style>
     </div>
   );
 };

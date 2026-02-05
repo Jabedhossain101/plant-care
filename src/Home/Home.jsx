@@ -1,6 +1,5 @@
 import { useLoaderData } from 'react-router';
 import AllPlant from '../Components/AllPlant';
-
 import Information from './Information';
 import Purpose from './Purpose';
 import Faq from './Faq';
@@ -11,20 +10,20 @@ const Home = () => {
 
   return (
     <div className="bg-[#fcfcf9] min-h-screen">
-      {/* Hero Section */}
+      {/* 1. Hero Section - Cinematic Entrance */}
       <section className="mb-20">
         <AdvancedBanner />
       </section>
 
-      {/* Brand Narrative Section */}
+      {/* 2. Brand Narrative - Philosophy Section */}
       <section className="mb-20">
         <Purpose />
       </section>
 
-      {/* Main Product Gallery */}
+      {/* 3. Main Product Gallery - Responsive 3-Column Grid */}
       <section className="relative py-24 bg-white/50 backdrop-blur-sm border-y border-slate-100">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
-          {/* Section Header - Styled like your Banner */}
+          {/* Section Header */}
           <div className="mb-16 text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
               <span className="text-emerald-700 font-mono text-xs font-bold tracking-[0.4em] uppercase">
@@ -48,21 +47,25 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Product Grid - Enhanced for Premium Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+          {/* Responsive Grid Logic:
+            - grid-cols-1: Mobile (1 card)
+            - md:grid-cols-2: Tablet/Mid (2 cards)
+            - lg:grid-cols-3: Large (3 cards)
+          */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 max-w-6xl mx-auto">
             {mangos.map((mango, index) => (
               <div
                 key={mango._id}
-                className="transform transition-all duration-700 hover:-translate-y-2"
-                style={{ transitionDelay: `${index * 50}ms` }} // Staggered entrance feel
+                className="transform transition-all duration-700 hover:-translate-y-3"
+                style={{ transitionDelay: `${index * 50}ms` }}
               >
                 <AllPlant mango={mango} />
               </div>
             ))}
           </div>
 
-          {/* View All / Load More - Optional Visual Hook */}
-          <div className="mt-16 text-center">
+          {/* Visual Hook - End of Section */}
+          <div className="mt-20 text-center">
             <div className="inline-block h-[1px] w-24 bg-slate-200 align-middle"></div>
             <span className="mx-6 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
               End of Collection
@@ -72,22 +75,24 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Expert Tips Section */}
+      {/* 4. Expert Tips & Care Advice */}
       <section>
         <Information />
       </section>
 
-      {/* Support Section */}
+      {/* 5. Support & FAQ Section */}
       <section>
         <Faq />
       </section>
 
-      {/* Final Floating CTA - Premium Touch */}
+      {/* 6. Final Floating CTA - Premium Touch */}
       <div className="fixed bottom-8 right-8 z-[100] hidden md:block">
-        <button className="bg-slate-900 text-white p-4 rounded-full shadow-2xl hover:bg-emerald-600 transition-all hover:scale-110 active:scale-95 group">
-          <span className="absolute right-full mr-4 bg-white text-slate-900 px-4 py-2 rounded-xl text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity shadow-sm whitespace-nowrap">
+        <button className="bg-slate-900 text-white p-4 rounded-full shadow-2xl hover:bg-emerald-600 transition-all hover:scale-110 active:scale-95 group relative">
+          {/* Tooltip Label */}
+          <span className="absolute right-full mr-4 bg-white text-slate-900 px-4 py-2 rounded-xl text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity shadow-xl whitespace-nowrap border border-slate-50">
             Chat with Botanist
           </span>
+          {/* Icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
